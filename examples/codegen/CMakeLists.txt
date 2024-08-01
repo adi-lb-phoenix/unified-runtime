@@ -34,8 +34,8 @@ if(LLVM_FOUND AND PkgConfig_FOUND AND LLVMSPIRVLib_FOUND)
     target_link_libraries(${TARGET_NAME}
             PUBLIC
             ${CMAKE_DL_LIBS}
-            # ${PROJECT_NAME}::headers
-            # ${PROJECT_NAME}::loader
+            ${PROJECT_NAME}::headers
+            ${PROJECT_NAME}::loader
             LLVM
             PkgConfig::LLVMSPIRVLib
     )
