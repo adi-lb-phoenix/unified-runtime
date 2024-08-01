@@ -2,8 +2,9 @@
 # Part of the Unified-Runtime Project, under the Apache License v2.0 with LLVM Exceptions.
 # See LICENSE.TXT
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
-
+cmake_minimum_required(VERSION 3.20.0 FATAL_ERROR)
 set(TARGET_NAME codegen)
+# project(${TARGET_NAME})
 find_package(LLVM CONFIG REQUIRED)
 find_package(PkgConfig REQUIRED)
 
@@ -20,7 +21,7 @@ if(LLVM_FOUND AND PkgConfig_FOUND AND LLVMSPIRVLib_FOUND)
     llvm_map_components_to_libnames(llvm_libs support core irreader bitwriter)
 
 
-    add_ur_executable(${TARGET_NAME}
+    add_executable(${TARGET_NAME}
         ${CMAKE_CURRENT_SOURCE_DIR}/codegen.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/helpers.cpp
     )
@@ -35,8 +36,8 @@ if(LLVM_FOUND AND PkgConfig_FOUND AND LLVMSPIRVLib_FOUND)
     target_link_libraries(${TARGET_NAME}
             PUBLIC
             ${CMAKE_DL_LIBS}
-            ${PROJECT_NAME}::headers
-            ${PROJECT_NAME}::loader
+            # ${PROJECT_NAME}::headers
+            # ${PROJECT_NAME}::loader
             LLVM
             PkgConfig::LLVMSPIRVLib
             # hello_library
