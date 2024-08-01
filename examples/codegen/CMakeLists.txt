@@ -7,7 +7,7 @@ set(TARGET_NAME codegen)
 find_package(LLVM CONFIG REQUIRED)
 find_package(PkgConfig REQUIRED)
 
-add_library(hello_library STATIC ${CMAKE_CURRENT_SOURCE_DIR}/helpers.cpp)
+# add_library(hello_library STATIC ${CMAKE_CURRENT_SOURCE_DIR}/helpers.cpp)
 
 set(TRANSLATOR_FOUND "FALSE")
 if(${PkgConfig_FOUND})
@@ -39,7 +39,7 @@ if(LLVM_FOUND AND PkgConfig_FOUND AND LLVMSPIRVLib_FOUND)
             ${PROJECT_NAME}::loader
             LLVM
             PkgConfig::LLVMSPIRVLib
-            hello_library
+            # hello_library
     )
     # TODO: Depend on building adapters.
 
